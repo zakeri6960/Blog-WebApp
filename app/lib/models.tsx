@@ -1,13 +1,8 @@
 import mongoose from "mongoose";
+import { IContact, IPost, IUser } from "./types";
 
 
-interface IUser {
-    username: string;
-    email: string;
-    password: string;
-    img?: string;
-    isAdmin?: boolean;
-}
+
 
 const userSchema = new mongoose.Schema<IUser>({
     username: {
@@ -37,13 +32,7 @@ const userSchema = new mongoose.Schema<IUser>({
     }
 },{timestamps: true});
 
-interface IPost {
-    title: string;
-    desc: string;
-    img?: string;
-    userId: string;
-    slug: string;
-}
+
 
 const postSchema = new mongoose.Schema<IPost>({
     title: {
@@ -68,5 +57,33 @@ const postSchema = new mongoose.Schema<IPost>({
     }
 },{timestamps: true});
 
+
+
+const contactSchema = new mongoose.Schema<IContact>({
+    name: {
+        type: String,
+        required: true,
+        min: 3,
+        max: 20
+    },
+    email: {
+        type: String,
+        required: true,
+        unique: true,
+    },
+    phone: {
+        type: String,
+        required: true,
+        unique: true,
+        min: 10,
+        max: 11,
+    },
+    message: {
+        type: String,
+        required: true
+    },
+}, { timestamps: true });
+
 export const User = mongoose.models.User || mongoose.model<IUser>("User", userSchema);
 export const Post = mongoose.models.Post || mongoose.model<IPost>("Post", postSchema);
+export const Contact_u = mongoose.models.Contact_u || mongoose.model<IContact>("Contact_u", contactSchema);

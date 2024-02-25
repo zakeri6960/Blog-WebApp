@@ -1,4 +1,5 @@
 "use client"
+import { addContact } from "@/app/lib/serverAction";
 import Aos from "aos"
 import { useEffect } from "react"
 
@@ -17,21 +18,21 @@ export default function ContactPage() {
           
         </div>
         <div className="pb-10 pt-10 md:pb-0 md:pt-0">
-          <form className="flex flex-col p-4  text-center gap-3 text-white" action="">
+          <form action={addContact} className="flex flex-col p-4  text-center gap-3 text-white">
             <div>
-              <input data-aos="fade-up" data-aos-duration="1000" className="w-full md:w-[80%] bg-white/10 py-3 px-4 text-xs rounded" type="text" placeholder="Name and Surname"/>
+              <input data-aos="fade-up" data-aos-duration="1000" className="w-full md:w-[80%] bg-white/10 py-3 px-4 text-xs rounded" name="name" type="text" placeholder="Name and Surname"/>
             </div>
             <div>
-              <input data-aos="fade-up" data-aos-duration="1200" className="w-full md:w-[80%] bg-white/10 py-3 px-4 text-xs rounded" type="text" placeholder="Email address"/>
+              <input data-aos="fade-up" data-aos-duration="1200" className="w-full md:w-[80%] bg-white/10 py-3 px-4 text-xs rounded" name="email" type="text" placeholder="Email address"/>
             </div>
             <div>
-              <input data-aos="fade-up" data-aos-duration="1400" className="w-full md:w-[80%] bg-white/10 py-3 px-4 text-xs rounded" type="text" placeholder="Phone Number (Optional)"/>
+              <input data-aos="fade-up" data-aos-duration="1400" className="w-full md:w-[80%] bg-white/10 py-3 px-4 text-xs rounded" name="phone" type="text" placeholder="Phone Number (Optional)"/>
             </div>
             <div>
-              <textarea data-aos="fade-up" data-aos-duration="1600" className="w-full md:w-[80%] h-40 bg-white/10 py-3 px-4 text-start text-xs rounded" placeholder="Message"/>
+              <textarea data-aos="fade-up" data-aos-duration="1600" className="w-full md:w-[80%] h-40 bg-white/10 py-3 px-4 text-start text-xs rounded" name="message" placeholder="Message"/>
             </div>
             <div>
-              <button data-aos="fade-up" data-aos-duration="1800" className="w-full md:w-[80%] bg-blue-500 text-white hover:bg-blue-700 py-3 px-4 text-xs rounded" type="button" >Send</button>
+              <button data-aos="fade-up" data-aos-duration="1800" className="w-full md:w-[80%] bg-blue-500 text-white hover:bg-blue-700 py-3 px-4 text-xs rounded" type="submit" >Send</button>
             </div>
           </form>
         </div>
